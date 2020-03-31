@@ -14,12 +14,19 @@
         </span>
       </el-button>
     </div>
+    <div>
+      <Study />
+    </div>
   </div>
 </template>
 
 <script>
+import Study from "../Study";
 export default {
   name: "UIDemo",
+  components:{
+    Study,
+  },
   data() {
     // 读取pageLang,this.$t('UIDemo.message')这样调用比较复杂
     const text = this.SimpleLang.getPageLang.call(this, "UIDemo");

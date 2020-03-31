@@ -23,7 +23,7 @@ module.exports = {
   context: path.resolve(__dirname, '../'),
   entry: {
     // 编译文件入口
-    app: './src/main.js'
+    app: './src/main.ts'
   },
 
   output: {
@@ -39,7 +39,7 @@ module.exports = {
 
   resolve: {
     // 自动补全的扩展名,能够使用户在引入模块时不带扩展
-    extensions: ['.js', '.vue', '.json'],
+    extensions: ['.ts', '.js', '.vue', '.json'],
 
     // 默认路径代理，例如 import Vue from 'vue$'，会自动到 'vue/dist/vue.esm.js'中寻找
 
@@ -57,6 +57,14 @@ module.exports = {
         test: /\.vue$/,
         loader: 'vue-loader',
         options: vueLoaderConfig
+      },
+      {
+        test: /\.ts$/,
+        loader: 'ts-loader',
+        exclude: /node_modules/,
+        options: {
+          appendTsSuffixTo: [/\.vue$/],
+        }
       },
       {
         test: /\.js$/,
@@ -89,11 +97,11 @@ module.exports = {
       }
     ]
   },
-  node:{
-    dgram:'empty',
-    fs:'empty',
-    net:'empty',
-    tls:'empty',
-    child_process:'empty',
+  node: {
+    dgram: 'empty',
+    fs: 'empty',
+    net: 'empty',
+    tls: 'empty',
+    child_process: 'empty',
   }
 }
